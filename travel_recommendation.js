@@ -12,11 +12,18 @@ function botonBusqueda()
 
     fetch('travel_recommendation_api.json')
       .then(response => response.json())
-      .then(data => {
+      .then(data => 
+      {
         console.log(data.countries)
-        
         alert(input);
-        
+
+        const destino = data.countries.find(item => item.name.toLowerCase() === input);
+        if (destino)
+        {
+            resultDescriptionDiv.innerHTML = destino.name;
+            resultDescriptionDiv.innerHTML += `<img src="${destino.cities[0].imageUrl}" alt="hjh">`;
+
+        }
       })
       .catch(error => {
         console.error('Error:', error);
