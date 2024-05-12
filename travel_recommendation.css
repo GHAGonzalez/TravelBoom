@@ -34,7 +34,7 @@ li a:hover {
 
   body
     {
-      /*background-image: url('travel_background.jpg');*/
+      background-image: url('travel_background.jpg');
       background-repeat: no-repeat;
       background-size: cover;
     }

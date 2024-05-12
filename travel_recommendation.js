@@ -24,9 +24,18 @@ function botonBusqueda()
         {
            alert("field existe");
            console.log(data[input][0])
- 
-           result1Div.innerHTML = data[input][0].name;
-           result1Div.innerHTML += `<img src="${data[input][0].cities[0].imageUrl}" alt="imagen">`;
+           
+           if(input==="countries")
+           {
+              result1Div.innerHTML = data[input][0].name;
+              result1Div.innerHTML += `<img src="${data[input][0].cities[0].imageUrl}" alt="imagen">`;
+           }
+           else
+           {
+               result1Div.innerHTML = data[input][0].name;
+              result1Div.innerHTML += `<img src="${data[input][0].imageUrl}" alt="imagen">`;
+           }
+
         }
         else
            alert("field no existe");
