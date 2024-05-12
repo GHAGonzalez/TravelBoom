@@ -5,29 +5,36 @@ function botonBusqueda()
     const input = document.getElementById('searchBarInput').value.toLowerCase();
     //const resultDiv = document.getElementById('recomendation1-description');
     //resultDiv.innerHTML = '';
-    const resultDescriptionDiv = document.getElementById('recomendation1-description');
-    resultDescriptionDiv.innerHTML = 'HOLA MUNDO';
-
-    
+    const result1Div = document.getElementById('result1');
+    result1Div.innerHTML = 'input';
 
     fetch('travel_recommendation_api.json')
       .then(response => response.json())
       .then(data => 
       {
-        console.log(data.countries)
-        alert(input);
+        
+        //alert(input);
 
-        const destino = data.countries.find(item => item.name.toLowerCase() === input);
-        if (destino)
+        //const destino = data[0].find(item => item[input].toLowerCase() === input);
+        //console.log(destino)
+        //console.log(data)
+
+
+        if(data.hasOwnProperty(input))
         {
-            resultDescriptionDiv.innerHTML = destino.name;
-            resultDescriptionDiv.innerHTML += `<img src="${destino.cities[0].imageUrl}" alt="hjh">`;
-
+           alert("field existe");
+           console.log(data[input][0])
+ 
+           result1Div.innerHTML = data[input][0].name;
+           result1Div.innerHTML += `<img src="${data[input][0].cities[0].imageUrl}" alt="imagen">`;
         }
+        else
+           alert("field no existe");
+ 
       })
       .catch(error => {
         console.error('Error:', error);
-        resultDescriptionDiv.innerHTML = 'An error occurred while fetching data.';
+        result1Div.innerHTML = 'An error occurred while fetching data.';
       });
 
 }
