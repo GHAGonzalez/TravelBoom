@@ -23,12 +23,34 @@ function botonBusqueda()
         if(data.hasOwnProperty(input))
         {
            alert("field existe");
-           console.log(data[input][0])
+           console.log("entrada:"+input)
+           console.log("pais:"+data[input][1].name)
+           console.log(data[input][1])
            
            if(input==="countries")
            {
               result1Div.innerHTML = data[input][0].name;
               result1Div.innerHTML += `<img src="${data[input][0].cities[0].imageUrl}" alt="imagen">`;
+
+              var options = { timeZone: 'America/New_York', hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };;
+              switch(data[input][1].name)
+               {
+                case "Australia":
+                    options = { timeZone: 'Australia/Sydney', hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+                  break;
+                case "Brazil":
+                    options = { timeZone: 'America/Sao_Paulo', hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+                  break;
+                case "Japan":
+                    options = { timeZone: "Japan", hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+                  break;
+                default:
+                    options = { timeZone: 'America/New_York', hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+              } 
+              
+              console.log("Timezone: "+options.timeZone);
+              const countryTime = new Date().toLocaleTimeString('en-US', options);
+              console.log("Current time in "+data[input][1].name+" : ", countryTime);
            }
            else
            {
@@ -50,3 +72,17 @@ function botonBusqueda()
 
 btnSearch.addEventListener("click", botonBusqueda);
 
+
+const btnReset = document.getElementById('btnReset');
+
+function botonBorrar()
+{
+    const result1Div = document.getElementById('result1');
+    result1Div.innerHTML = '';
+
+    const result2Div = document.getElementById('result2');
+    result1Div.innerHTML = '';
+
+}
+
+btnReset.addEventListener("click", botonBorrar);

@@ -62,16 +62,15 @@ li a:hover {
   }
 /*instagram*/
   .fa-instagram {
-    background: #3B5998;
+    background: pink;
     color: white;
   }
 
   /*youtube*/
   .fa-youtube {
-    background: #3B5998;
+    background:red;
     color: white;
   }
-
 
   /* Twitter */
   .fa-twitter {
@@ -104,6 +103,9 @@ li a:hover {
     border-color:black;
     width:44%;
     height: 44%;
+
+    font-size: 40px;
+    color: white;
   }
   
   div.salida1 {
@@ -127,6 +129,9 @@ li a:hover {
     border-color:black;
     width:44%;
     height: 44%;
+
+    font-size: 30px;
+    color: white;
   }
   
   div.salida2 {
